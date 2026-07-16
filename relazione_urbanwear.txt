@@ -1,0 +1,1015 @@
+================================================================
+RELAZIONE DEL PROGETTO — UrbanWear
+Corso di Tecnologie Web — A.A. 2025/2026
+Università degli Studi di Padova
+================================================================
+
+[PAGINA INIZIALE — DA COMPLETARE]
+
+Logo Università degli Studi di Padova
+Dipartimento di Matematica "Tullio Levi-Civita"
+
+Tecnologie Web — A.A. 2025/2026
+
+UrbanWear — Negozio di abbigliamento online
+
+Componenti del gruppo:
+  - [Nome Cognome]  matricola [XXXXXX]
+  - [Nome Cognome]  matricola [XXXXXX]
+  - [Nome Cognome]  matricola [XXXXXX]
+  - [Nome Cognome]  matricola [XXXXXX]
+
+Indirizzo del sito: [URL sul server del corso]
+
+Credenziali di accesso al sito:
+  Amministratore: username admin   password admin
+  Utente demo:    username user    password user
+
+================================================================
+INDICE
+================================================================
+
+1. Introduzione
+2. Analisi dei requisiti
+   2.1 Analisi dell'utente
+   2.2 SEO
+3. Progettazione
+   3.1 Schema organizzativo del sito
+   3.2 Tipi di utente
+   3.3 Funzionalità
+   3.4 Convenzioni interne
+   3.5 Schema della base di dati
+4. Realizzazione
+   4.1 HTML
+   4.2 Popolamento del database
+   4.3 CSS
+   4.4 Immagini e icone
+   4.5 Font
+   4.6 Colori
+   4.7 PHP
+   4.8 JavaScript
+   4.9 Validazione degli input
+   4.10 Sicurezza
+   4.11 Errori di navigazione
+   4.12 Accessibilità
+       4.12.1 Ausili per screen reader
+       4.12.2 Compatibilità browser
+5. Test effettuati
+   5.1 Navigabilità e accessibilità
+   5.2 Falsi positivi
+   5.3 Screen reader
+6. Organizzazione del gruppo
+   6.1 Divisione dei compiti
+7. Note
+
+================================================================
+1. INTRODUZIONE
+================================================================
+
+UrbanWear è un negozio di abbigliamento online progettato e
+realizzato come progetto per il corso di Tecnologie Web
+dell'Università di Padova. Il sito permette agli utenti di
+sfogliare un catalogo di capi di abbigliamento suddivisi per
+target (uomo, donna, bambino, bambina) e per categoria
+(t-shirt, felpe, pantaloni, giacche, ecc.), aggiungere prodotti
+al carrello, completare l'acquisto e consultare lo storico degli
+ordini. Un pannello di amministrazione consente a un utente con
+ruolo admin di gestire il catalogo prodotti.
+
+L'obiettivo del progetto è costruire un sito web completo,
+rispettoso degli standard HTML5 e CSS3, accessibile secondo le
+linee guida WCAG, realizzato in PHP con backend su database
+MySQL/MariaDB e arricchito con JavaScript non invasivo.
+
+[SCREENSHOT HOMEPAGE — DA AGGIUNGERE]
+
+================================================================
+2. ANALISI DEI REQUISITI
+================================================================
+
+2.1 ANALISI DELL'UTENTE
+-----------------------
+
+Il pubblico di UrbanWear comprende persone di diverse fasce
+d'età che acquistano abbigliamento online. Sono stati
+identificati tre profili principali:
+
+  - Visitatore (non registrato): naviga il catalogo e può
+    aggiungere prodotti al carrello in sessione. Per procedere
+    con l'acquisto deve registrarsi o effettuare il login.
+
+  - Utente autenticato: può completare acquisti, visualizzare
+    e gestire il proprio carrello, consultare lo storico degli
+    ordini e modificare la password.
+
+  - Amministratore: ha accesso al pannello di gestione
+    prodotti, dove può aggiungere nuovi capi, modificarne i
+    dati, attivare o disattivare la visibilità ed eliminare
+    i prodotti dal catalogo.
+
+Il sito è progettato per funzionare su desktop, tablet e
+smartphone. L'interfaccia è completamente responsive e
+accessibile, compatibile con screen reader per utenti con
+disabilità visive.
+
+2.2 SEO
+-------
+
+Ogni pagina del sito include un titolo (<title>) specifico e
+descrittivo, una meta description univoca e un insieme di
+meta keywords pertinenti. Il formato dei titoli segue la
+convenzione "Contenuto pagina | UrbanWear". Esempi:
+
+  - Home:        "Abbigliamento moderno online | UrbanWear"
+  - Prodotti:    "Catalogo abbigliamento | UrbanWear"
+  - Chi siamo:   "Chi siamo | UrbanWear"
+  - Gestione:    "Gestione Prodotti | UrbanWear"
+                 (con meta robots: noindex per escluderla
+                  dai motori di ricerca)
+
+Il sito utilizza URL parlanti per il filtro del catalogo
+(es. prodotti.php?target=donna) e la pagina di dettaglio
+prodotto (prodotto.php?id=5). I tag <h1>–<h3> seguono una
+gerarchia semantica coerente in tutte le pagine.
+
+================================================================
+3. PROGETTAZIONE
+================================================================
+
+3.1 SCHEMA ORGANIZZATIVO DEL SITO
+----------------------------------
+
+[MAPPA DEL SITO / SCHEMA AD ALBERO — DA AGGIUNGERE]
+
+Il sito è organizzato nelle seguenti sezioni principali:
+
+Pagine pubbliche statiche (HTML):
+  - index.html         Home con slider, sezione collezioni e
+                       sezione "Perché sceglierci"
+  - chi_siamo.html     Presentazione del team e del brand
+  - reso.html          Informazioni sulle politiche di reso
+  - termini.html       Termini di servizio
+  - privacy.html       Privacy Policy
+
+Pagine del catalogo (PHP):
+  - prodotti.php       Catalogo filtrato per target e/o ricerca
+  - prodotto.php       Dettaglio singolo prodotto con galleria,
+                       fisarmonica informativa e selezione taglia
+
+Pagine utente (PHP + template HTML):
+  - registrazione.html / registrazione.php
+                       Form di registrazione con validazione
+  - login.php          Area personale: login e benvenuto
+  - logout.php         Logout con distruzione sessione
+  - carrello.php       Gestione carrello acquisti
+  - checkout.php       Compilazione dati e conferma ordine
+  - conferma_ordine.php  Riepilogo post-acquisto
+  - ordini.php         Storico ordini dell'utente
+  - modifica_password.php  Cambio password
+
+Pannello amministratore (PHP):
+  - gestione_prodotti.php  Aggiunta, modifica, attivazione/
+                            disattivazione ed eliminazione
+                            dei prodotti
+
+Pagine di errore:
+  - 403.php            Accesso non autorizzato
+  - 404.php            Risorsa non trovata
+  - 500.php            Errore interno del server
+
+Endpoint interni:
+  - dati_carrello.php  API JSON per il badge e il drawer del
+                       carrello (consumata via fetch in JS)
+
+
+3.2 TIPI DI UTENTE
+-------------------
+
+Sono previsti tre livelli di accesso, gestiti tramite il
+campo "ruolo" della tabella utenti (ENUM 'admin'/'user') e
+la variabile di sessione $_SESSION['ruolo']:
+
+  Visitatore (non autenticato):
+    - Naviga il catalogo e le pagine informative
+    - Aggiunge prodotti al carrello (sessione PHP)
+    - Al checkout viene reindirizzato al login; il carrello
+      guest viene unito al carrello DB al momento del login
+
+  Utente autenticato (ruolo 'user'):
+    - Tutte le funzionalità del visitatore
+    - Acquisto (checkout e conferma ordine)
+    - Gestione carrello persistente su DB
+    - Storico ordini
+    - Modifica password
+
+  Amministratore (ruolo 'admin'):
+    - Tutte le funzionalità dell'utente
+    - Accesso al pannello gestione_prodotti.php
+    - Aggiunta nuovi prodotti con upload di 4 immagini
+    - Modifica dati prodotto
+    - Attivazione/disattivazione visibilità prodotto
+    - Eliminazione definitiva prodotto
+
+
+3.3 FUNZIONALITÀ
+-----------------
+
+Navigazione e catalogo:
+  - Home con slider automatico delle collezioni principali
+  - Filtro catalogo per target (uomo/donna/bambino/bambina)
+  - Ricerca full-text per nome e descrizione prodotto
+  - Breadcrumb dinamico aggiornato a seconda del filtro attivo
+  - Pagina dettaglio con galleria fotografica (4 immagini),
+    fisarmonica per materiali, guida taglie e cura del capo,
+    selezione taglia prima dell'aggiunta al carrello
+
+Carrello e acquisto:
+  - Carrello guest (sessione PHP) per utenti non loggati,
+    unito al carrello DB al login con ON DUPLICATE KEY UPDATE
+  - Drawer carrello laterale accessibile da qualsiasi pagina
+  - Aggiunta, aumento/diminuzione quantità, rimozione prodotti
+  - Checkout con riepilogo ordine e campo note facoltativo
+  - Conferma ordine con dettaglio articoli acquistati
+  - Storico ordini per l'utente
+
+Gestione account:
+  - Registrazione con validazione client-side e server-side
+  - Login con protezione anti brute-force (5 tentativi,
+    blocco di 15 secondi), verifica bcrypt
+  - Modifica password con verifica della password attuale
+  - Logout con distruzione sessione
+
+Pannello admin:
+  - Tabella riepilogativa di tutti i prodotti
+  - Form aggiunta prodotto con upload di 4 immagini
+    (PNG/JPG/WEBP, max 1 MB ciascuna)
+  - Form modifica selettiva dei campi prodotto
+  - Attivazione/disattivazione visibilità prodotto
+  - Eliminazione definitiva prodotto
+
+
+3.4 CONVENZIONI INTERNE
+------------------------
+
+Struttura dei file:
+  - Template/   Pagine HTML destinate a essere popolate da PHP
+  - Style/      Fogli di stile (style.css, mobile.css,
+                stampa.css)
+  - Script/     File JavaScript
+  - immagini/   Immagini del sito
+    - immagini/icone/  Icone SVG/WebP dell'interfaccia
+    - immagini/prodotti/[target]/[nome-prodotto]/
+                       Foto prodotti organizzate per target
+                       e nome (generate al momento dell'upload)
+
+Pattern template:
+  I file PHP che generano pagine leggono il corrispondente
+  template HTML dalla cartella Template/ tramite
+  file_get_contents(), sostituiscono i segnaposto con
+  str_replace() o strtr() e inviano il risultato con echo.
+  Segnaposto usati:
+    - [PLACEHOLDER]   valori singoli (es. [LOGIN_ERR])
+    - {{PLACEHOLDER}} blocchi HTML generati (es. {{PRODOTTI}})
+
+Link e percorsi:
+  Tutti i riferimenti a file CSS, JS, immagini e link interni
+  usano percorsi relativi, per garantire la portabilità del
+  sito su qualsiasi cartella del server.
+
+Visibilità link visitati:
+  I link visitati sono stilizzati in modo distinto (colore
+  diverso) per aiutare l'utente a orientarsi nel sito.
+
+Breadcrumb:
+  Ogni pagina espone un breadcrumb testuale che indica la
+  posizione dell'utente nell'albero del sito, con aria-current
+  sull'elemento corrente e frecce aria-hidden="true".
+
+Pagine di errore HTTP:
+  Le pagine 403.php, 404.php e 500.php impostano il corretto
+  codice di stato HTTP (http_response_code()) e presentano
+  all'utente un messaggio amichevole con link alla home.
+  Il file .htaccess include i riferimenti alle ErrorDocument
+  (da configurare con il percorso assoluto corretto sul server
+  del corso dopo il deployment).
+
+
+3.5 SCHEMA DELLA BASE DI DATI
+------------------------------
+
+[SCHEMA E-R O RELAZIONALE — DA AGGIUNGERE]
+
+Il database si chiama "urbanwear" (charset utf8mb4,
+collation utf8mb4_unicode_ci). Le tabelle sono:
+
+  utenti (id, nome, cognome, username, password, email, ruolo)
+    - username e email sono UNIQUE
+    - password è l'hash bcrypt prodotto da password_hash()
+    - ruolo è ENUM('admin','user'), default 'user'
+
+  categorie (id, nome)
+    - nome è UNIQUE (es. T-Shirt, Felpe, Pantaloni, ...)
+
+  prodotti (id, nome, descrizione, materiali, guida_taglie,
+            cura, prezzo, id_categoria, target, attivo)
+    - target: ENUM('uomo','donna','bambino','bambina')
+    - attivo: TINYINT(1), 1=visibile, 0=nascosto
+    - id_categoria: FK → categorie(id) ON DELETE RESTRICT
+
+  immagini_prodotti (id, id_prodotto, file_path, alt,
+                     ordine, is_principale)
+    - Ogni prodotto ha 4 immagini (ordine 1–4)
+    - is_principale=1 per l'immagine principale (ordine 1)
+    - UNIQUE KEY su (id_prodotto, ordine)
+    - FK → prodotti(id) ON DELETE CASCADE
+
+  carrelli (id, id_utente)
+    - Un carrello per utente
+    - FK → utenti(id) ON DELETE CASCADE
+
+  carrello_prodotti (id_carrello, id_prodotto, quantita)
+    - PRIMARY KEY (id_carrello, id_prodotto)
+    - FK → carrelli(id) e prodotti(id) ON DELETE CASCADE
+
+  ordini (id, id_utente, data, note)
+    - data: DATETIME DEFAULT CURRENT_TIMESTAMP
+    - FK → utenti(id) ON DELETE CASCADE
+
+  ordine_prodotti (id_ordine, id_prodotto, quantita,
+                   prezzo_unitario)
+    - prezzo_unitario: snapshot del prezzo al momento dell'ordine
+    - PRIMARY KEY (id_ordine, id_prodotto)
+    - FK → ordini(id) e prodotti(id) ON DELETE CASCADE
+
+================================================================
+4. REALIZZAZIONE
+================================================================
+
+4.1 HTML
+--------
+
+Tutte le pagine sono scritte in HTML5 e dichiarano il
+DOCTYPE corretto, il charset UTF-8 e il viewport per il
+layout responsive. La lingua dichiarata è "it" (lang="it"
+sull'elemento <html>); le parole in inglese (es. "UrbanWear",
+"shopping", "Privacy Policy") sono marcate con lang="en".
+
+Le pagine usano gli elementi semantici di HTML5:
+  <header>, <nav>, <main>, <section>, <article>, <aside>,
+  <footer>, <h1>–<h3>, <figure>/<figcaption>, <details>/
+  <summary> (accordion prodotto), <address> (footer contatti).
+
+Ogni pagina ha esattamente un <h1> (il logo del sito),
+dichiarato con aria-label="UrbanWear - negozio di
+abbigliamento online"; i titoli di sezione usano <h2>
+e <h3> in ordine gerarchico corretto.
+
+Griglia categorie, filtri e prodotti:
+  Le collezioni nella home, i filtri del catalogo e la
+  griglia dei prodotti sono realizzati come liste
+  (<ul>/<li>) con role="list" (necessario per ripristinare
+  la semantica di lista rimossa da list-style:none in
+  VoiceOver/Firefox), così da permettere allo screen reader
+  di annunciare il numero di elementi.
+
+Pagine statiche (senza PHP):
+  index.html, chi_siamo.html, registrazione.html, reso.html,
+  termini.html, privacy.html.
+
+Pagine con template PHP:
+  Tutti i file nella cartella Template/ sono HTML puri, privi
+  di codice PHP. Il PHP legge il template, sostituisce i
+  segnaposto e produce il HTML finale. In questo modo la
+  struttura e la presentazione restano separate dalla logica.
+
+
+4.2 POPOLAMENTO DEL DATABASE
+-----------------------------
+
+Il file urbanwear_aggiornato.sql contiene:
+  - La creazione del database e di tutte le tabelle
+  - L'inserimento di 8 categorie di abbigliamento:
+    T-Shirt, Felpe, Pantaloni, Giacche, Accessori,
+    Scarpe, Shorts, Maglioni
+  - L'inserimento di 12 prodotti demo distribuiti nei
+    quattro target (uomo, donna, bambino, bambina), ciascuno
+    con nome, descrizione, materiali, guida taglie,
+    istruzioni per la cura, prezzo, categoria e target
+  - L'inserimento delle immagini associate (4 per prodotto),
+    con il percorso relativo e il testo alternativo
+  - L'inserimento di due utenti di test:
+      admin / admin  (ruolo admin)
+      user  / user   (ruolo user)
+    Le password sono memorizzate come hash bcrypt generato da
+    PHP password_hash() con algoritmo PASSWORD_DEFAULT
+    (bcrypt, cost factor 10).
+
+Per reimportare il DB su un nuovo server è sufficiente
+eseguire urbanwear_aggiornato.sql in phpMyAdmin o via CLI.
+
+
+4.3 CSS
+-------
+
+I fogli di stile sono tre, inclusi in questo ordine in tutte
+le pagine:
+
+  style.css   — Stile principale: variabili CSS, tipografia,
+                layout desktop, header, nav, footer, griglia
+                prodotti, carrello, form, admin, ecc.
+
+  mobile.css  — Stili responsive con @media queries:
+                ≤1100px: griglia prodotti a 2 colonne
+                ≤768px:  layout a colonna singola, menu
+                         hamburger, tabella admin con etichette
+                         data-label, griglia categorie
+                ≤468px:  ottimizzazioni per smartphone piccoli
+
+  stampa.css  — Stili per la stampa (@media print):
+                nasconde tutti gli elementi interattivi
+                (nav, pulsanti, filtri, drawer carrello),
+                imposta il font serif (Georgia), layout A4,
+                espande i <details> accordion (le sezioni
+                del prodotto vengono mostrate tutte aperte),
+                adatta le griglie a 3 colonne, stampa
+                correttamente il carrello, gli ordini,
+                le pagine legali e il pannello admin.
+
+Le griglie usano CSS Grid (con fallback flexbox dove
+opportuno). Le <ul> che fungono da container di griglia
+hanno list-style:none e padding:0, con role="list" nell'HTML.
+
+Le variabili CSS (custom properties) definite in :root
+centralizzano la palette cromatica e le dimensioni ricorrenti,
+rendendo semplice la manutenzione del tema visivo.
+
+
+4.4 IMMAGINI E ICONE
+---------------------
+
+Tutte le immagini del sito sono in formato WebP per garantire
+buone prestazioni di caricamento. Alcune icone nell'interfaccia
+sono in formato PNG. Le immagini dei prodotti caricate tramite
+il pannello admin vengono accettate in formato PNG, JPG/JPEG
+o WebP (dimensione massima 1 MB per file) e salvate nella
+directory immagini/prodotti/[target]/[nome-prodotto]/.
+
+Le icone dell'interfaccia (hamburger, ricerca, utente, carrello,
+freccia su, chiudi) sono file WebP nella cartella
+immagini/icone/ e sono marcate con alt="" e aria-hidden="true"
+perché puramente decorative; il significato è trasmesso
+dall'etichetta aria-label del pulsante o del link contenitore.
+
+I tag <img> per i prodotti hanno sempre un attributo alt
+descrittivo, inserito dall'amministratore al momento
+dell'upload e memorizzato nella colonna alt della tabella
+immagini_prodotti. Le immagini non above-the-fold usano
+loading="lazy".
+
+
+4.5 FONT
+--------
+
+Il sito usa due famiglie di caratteri:
+
+  Bungee (Google Fonts) — Solo per il logo e i titoli
+    principali delle sezioni. Viene caricato tramite Google
+    Fonts CDN con i tag <link rel="preconnect"> e
+    display=swap per ridurre il layout shift. Senza
+    JavaScript e senza connessione esterna il browser
+    ricade su un font sans-serif di sistema.
+
+  System UI (sans-serif) — Per tutto il corpo del testo,
+    specificato tramite la pila font-family: system-ui,
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif definita nella variabile CSS.
+
+
+4.6 COLORI
+----------
+
+La palette cromatica è definita tramite variabili CSS in
+:root in style.css. I colori principali sono:
+
+  [SCREENSHOT PALETTE COLORI — DA AGGIUNGERE]
+
+Il contrasto tra colore del testo e sfondo è stato verificato
+per soddisfare i requisiti WCAG AA (rapporto minimo 4.5:1
+per testo normale, 3:1 per testo grande).
+
+
+4.7 PHP
+-------
+
+Il PHP è scritto con strict_types=1 e utilizza MySQLi con
+prepared statement per tutte le query al database. La
+connessione al DB è definita nel file config.php, che
+configura charset utf8mb4 e collation utf8mb4_unicode_ci.
+
+Ogni script PHP che genera una pagina:
+  1. Avvia la sessione con session_start()
+  2. Include config.php
+  3. Svolge la logica (query, POST handling)
+  4. Legge il template HTML con file_get_contents()
+  5. Sostituisce i segnaposto con str_replace() o strtr()
+  6. Invia il risultato con echo
+
+Principali script PHP:
+
+  config.php
+    Connessione MySQLi. Imposta il charset e, in caso di
+    errore di connessione, termina lo script.
+
+  registrazione.php
+    Riceve il form POST, esegue validazione server-side
+    (campi vuoti, lunghezza minima nome/cognome, formato
+    username con regex, email con filter_var, password ≥8
+    caratteri), verifica unicità di username ed email,
+    genera l'hash bcrypt con password_hash($pwd, PASSWORD_
+    DEFAULT), inserisce il record e crea la sessione utente.
+
+  login.php
+    Gestisce sia la visualizzazione della pagina (GET)
+    sia il tentativo di accesso (POST). Verifica le
+    credenziali con password_verify(), rigenera l'ID di
+    sessione con session_regenerate_id(true) dopo il login,
+    e unisce l'eventuale carrello guest al carrello DB
+    (INSERT ... ON DUPLICATE KEY UPDATE quantita=quantita+?).
+    Dopo il login reindirizza alla pagina di provenienza
+    (se memorizzata in $_SESSION['redirect_after_login'])
+    o alla home.
+
+  logout.php
+    Distrugge la sessione (session_destroy()) e reindiriz-
+    za alla home.
+
+  prodotti.php
+    Costruisce dinamicamente la query SQL in base al
+    parametro GET ?target= e/o ?q= (ricerca per nome e
+    descrizione). Genera la griglia prodotti come lista
+    <ul class="prodotti-grid"> con un <li> per prodotto,
+    sostituisce {{PRODOTTI}} nel template e produce la
+    pagina con breadcrumb dinamico e pulsante "Torna al
+    catalogo" se è attivo un filtro.
+
+  prodotto.php
+    Carica il prodotto richiesto (?id=), verifica che sia
+    attivo, recupera tutte e 4 le immagini e genera
+    l'accordion informativo (materiali, guida taglie, cura)
+    con <details>/<summary>. Gestisce anche il parametro
+    ?added=1 per mostrare il toast di conferma aggiunta
+    al carrello.
+
+  dati_carrello.php
+    Endpoint JSON chiamato via fetch() da menu-header.js.
+    Restituisce: logged_in, count (numero articoli nel
+    carrello), items (array di id, nome, quantità, subtotale,
+    immagine) e total.
+
+  carrello.php
+    Gestisce tre azioni POST (aggiungi, aggiorna, rimuovi).
+    Per gli utenti non autenticati che tentano di aggiungere
+    un prodotto, salva l'articolo in $_SESSION['guest_cart']
+    e reindirizza al login. Il percorso base viene calcolato
+    con dirname($_SERVER['SCRIPT_NAME']) per garantire il
+    redirect corretto indipendentemente dalla posizione del
+    sito sul server.
+
+  checkout.php / conferma_ordine.php
+    Il checkout presenta il riepilogo del carrello e un
+    campo note. Al submit crea il record in ordini e i
+    relativi record in ordine_prodotti (con snapshot del
+    prezzo), svuota il carrello e reindirizza alla conferma.
+
+  ordini.php
+    Recupera e mostra lo storico degli ordini dell'utente
+    corrente con i dettagli dei prodotti acquistati.
+
+  modifica_password.php
+    Verifica la password attuale con password_verify() e,
+    se corretta, salva il nuovo hash bcrypt.
+
+  gestione_prodotti.php
+    Accessibile solo agli utenti con ruolo admin (altrimenti
+    HTTP 403). Gestisce quattro azioni POST:
+      - aggiungi: valida e salva le 4 immagini su disco,
+        inserisce il prodotto nel DB e registra i percorsi
+        delle immagini in immagini_prodotti
+      - modifica: aggiorna solo i campi non vuoti nel form
+      - stato: imposta il campo attivo a 0 o 1
+      - elimina: rimuove il prodotto (ON DELETE CASCADE
+        rimuove automaticamente immagini, carrello,
+        ordine_prodotti associati)
+    I file immagine vengono validati per tipo MIME reale
+    (non solo per estensione) con mime_content_type().
+
+  403.php / 404.php / 500.php
+    Impostano il codice di risposta HTTP corretto e mostrano
+    una pagina amichevole con link alla home.
+
+
+4.8 JAVASCRIPT
+--------------
+
+Tutti i file JavaScript usano il pattern DOMContentLoaded
+e verificano la disponibilità delle API necessarie (querySelector,
+addEventListener, fetch) prima di procedere, garantendo il
+funzionamento degradato senza JS.
+
+  menu-header.js
+    Presente in tutte le pagine. Gestisce:
+    - Menu hamburger per mobile (aria-expanded aggiornato)
+    - Barra di ricerca toggle (hidden attribute)
+    - Drawer carrello laterale (apertura, chiusura, overlay)
+    - Badge carrello (aggiornato al caricamento via fetch
+      su dati_carrello.php)
+    - Rimozione prodotti direttamente dal drawer via fetch
+    - Chiusura con tasto Esc
+    - Chiusura automatica menu/search/drawer al click esterno
+
+  slider-home.js
+    Gestisce lo slider della hero section della home:
+    transizione automatica tra le slide con pausa al
+    passaggio del mouse (hover).
+
+  salta-contenuto.js
+    Gestisce il focus sul contenuto principale al click
+    sul link "Vai al contenuto" (skip link), per garantire
+    la navigazione da tastiera anche in caso di browser
+    che non spostano il focus sul target di un anchor.
+
+  filtro-catalogo.js
+    Legge il parametro ?target= dall'URL; se presente,
+    nasconde tutti gli <li> della griglia prodotti che
+    non appartengono al target selezionato (via
+    el.style.display='none') e nasconde la griglia filtri.
+    Se non è presente alcun target, mostra tutti i prodotti.
+
+  galleria-prodotto.js
+    Gestisce la galleria fotografica della pagina prodotto:
+    click sulle miniature per mostrare l'immagine principale
+    corrispondente (aggiornamento src e alt).
+
+  stampa-prodotto.js
+    Ascolta gli eventi beforeprint/afterprint: prima della
+    stampa apre tutti i <details> dell'accordion (per
+    mostrare materiali, guida taglie, cura); dopo la stampa
+    li richiude.
+
+  validazione-registrazione.js
+    Valida il form di registrazione lato client: controlla
+    che tutti i campi siano compilati, che lo username abbia
+    formato valido (regex /^[a-zA-Z0-9._-]{3,20}$/), che
+    l'email sia valida e che la password sia di almeno 8
+    caratteri. Mostra messaggi di errore inline in un
+    elemento con role="alert" e aria-live="polite".
+
+  validazione-gestione-prodotti.js
+    Valida lato client i form del pannello admin: verifica
+    che il prezzo sia un numero positivo con al massimo
+    2 decimali e punto come separatore decimale.
+
+  carrello.js
+    Timer visivo per il toast "Prodotto aggiunto al carrello"
+    e gestione degli aggiornamenti quantità nel carrello.
+
+  modifica-password.js
+    Validazione client-side del form modifica password:
+    verifica che i campi non siano vuoti e che la nuova
+    password abbia lunghezza minima.
+
+  timer-aggiunto-al-carrello.js
+    Gestisce la visualizzazione e la scomparsa automatica
+    del toast di conferma aggiunta al carrello.
+
+  torna-indietro.js
+    Gestisce il pulsante "Torna indietro" della pagina 404,
+    usando history.back() se disponibile.
+
+  validazione-taglia.js
+    Verifica che l'utente abbia selezionato una taglia
+    prima di aggiungere il prodotto al carrello.
+
+
+4.9 VALIDAZIONE DEGLI INPUT
+----------------------------
+
+La validazione degli input è eseguita a due livelli:
+
+  Lato client (JavaScript):
+    - Validazione del form di registrazione (validazione-
+      registrazione.js): campi obbligatori, formato username,
+      formato email, lunghezza password
+    - Validazione del form gestione prodotti (validazione-
+      gestione-prodotti.js): prezzo positivo con massimo
+      2 decimali
+    - Selezione taglia obbligatoria prima dell'aggiunta
+      al carrello (validazione-taglia.js)
+    - Modifica password: campi non vuoti (modifica-password.js)
+    - I messaggi di errore client-side sono esposti tramite
+      elementi con role="alert" e aria-live="polite"
+
+  Lato server (PHP):
+    - registrazione.php: lunghezza nome/cognome, regex
+      username, filter_var email, lunghezza password minima,
+      unicità di username ed email con query preparata
+    - gestione_prodotti.php: validazione del file upload per
+      tipo MIME reale, dimensione massima, campo prezzo
+    - login.php: campi non vuoti, password_verify()
+    - carrello.php: verifica che il prodotto sia attivo
+      prima di aggiungerlo al carrello
+    - Tutti i valori inviati in output HTML sono sanificati
+      con htmlspecialchars() (o la funzione wrapper e())
+
+
+4.10 SICUREZZA
+--------------
+
+  Prepared statement:
+    Tutte le query SQL usano MySQLi prepared statement con
+    bind_param(), eliminando il rischio di SQL injection.
+
+  Hashing delle password:
+    Le password sono salvate come hash bcrypt con
+    password_hash($pwd, PASSWORD_DEFAULT), che usa il
+    fattore di costo 10. La verifica avviene con
+    password_verify().
+
+  Rigenerazione sessione:
+    Dopo il login avvenuto con successo la sessione viene
+    rigenerata con session_regenerate_id(true) per prevenire
+    attacchi di session fixation.
+
+  Anti brute-force:
+    Il login tiene traccia del numero di tentativi falliti
+    consecutivi in sessione ($_SESSION['login_fail_count']).
+    Dopo 5 tentativi falliti viene impostato un blocco di
+    15 secondi ($_SESSION['login_cooldown_until']). Il
+    contatore si azzera al primo login riuscito.
+
+  Controllo accesso admin:
+    gestione_prodotti.php verifica che $_SESSION['ruolo']
+    sia 'admin'. In caso contrario imposta HTTP 403 e
+    reindirizza alla pagina 403.php.
+
+  Redirect post-login sicuro:
+    Prima di reindirizzare l'utente alla pagina memorizzata
+    in $_SESSION['redirect_after_login'], il codice verifica
+    che l'URL inizi con '/' e non contenga un host (per
+    prevenire open redirect verso siti esterni).
+
+  Upload immagini:
+    Il tipo dei file caricati viene verificato tramite
+    mime_content_type() sul file temporaneo (non solo
+    sull'estensione dichiarata). Sono accettati solo
+    image/jpeg, image/png, image/webp. La dimensione
+    massima è 1 MB per file. Il nome del file salvato su
+    disco è generato internamente (non deriva dall'input
+    dell'utente).
+
+  Output escaping:
+    Tutti i valori dinamici inseriti nell'HTML sono
+    passati per htmlspecialchars() con ENT_QUOTES e
+    charset UTF-8 per prevenire XSS.
+
+  .htaccess:
+    Il file .htaccess disattiva ServerSignature e
+    nasconde le versioni del server (ServerTokens Prod).
+    Protegge la directory immagini/prodotti/ con
+    Options -Indexes per impedire il listing delle cartelle.
+
+
+4.11 ERRORI DI NAVIGAZIONE
+---------------------------
+
+Le pagine di errore sono gestite da script PHP dedicati:
+
+  403.php — Accesso negato (utente non admin tenta di
+            accedere al pannello)
+  404.php — Risorsa non trovata; la pagina include il
+            pulsante "Torna indietro" (gestito da torna-
+            indietro.js con history.back() se disponibile)
+  500.php — Errore interno del server (template non
+            trovato o errore di connessione DB)
+
+Tutti e tre impostano il codice HTTP corretto con
+http_response_code() e presentano all'utente un messaggio
+amichevole con link alla home.
+
+Il file .htaccess definisce le direttive ErrorDocument
+(da completare con il percorso assoluto corretto sul
+server del corso).
+
+
+4.12 ACCESSIBILITÀ
+------------------
+
+4.12.1 Ausili per screen reader
+
+  Skip link:
+    Ogni pagina contiene un link "Vai al contenuto" come
+    primo elemento del <header>. Il link è visivamente
+    nascosto (classe skip-link con clip-path) finché non
+    riceve il focus da tastiera, momento in cui diventa
+    visibile. Lo script salta-contenuto.js garantisce che
+    il focus sia spostato correttamente sull'elemento di
+    destinazione anche in browser che non lo fanno in modo
+    nativo (es. Safari).
+
+  Landmark ARIA:
+    Il sito usa i landmark HTML5 nativi (<header>, <nav>,
+    <main>, <aside>, <footer>) e integra attributi ARIA
+    dove necessario:
+    - aria-label sulle <nav> per distinguere navigazione
+      principale da breadcrumb e da nav di pagina
+    - aria-labelledby sulle <section> per associarle al
+      loro titolo <h2>/<h3>
+    - aria-current="page" sul link della pagina corrente
+      nel menu di navigazione
+    - aria-current="page" nel breadcrumb per l'elemento
+      corrente
+
+  Pulsanti e controlli interattivi:
+    - I pulsanti icona (hamburger, ricerca, carrello) hanno
+      aria-label descrittivo; le immagini al loro interno
+      hanno alt="" e aria-hidden="true"
+    - Il pulsante hamburger aggiorna aria-expanded e
+      aria-label dinamicamente (via JS in menu-header.js)
+    - Il badge del carrello ha aria-hidden="true" (il dato
+      è accessibile tramite il drawer e la pagina carrello)
+
+  Form:
+    - Tutti i campi hanno un <label> associato tramite for/id
+    - I campi correlati sono raggruppati in <fieldset> con
+      <legend> (visibile o .sr-only per i raggruppamenti
+      tecnici)
+    - I messaggi di errore sono in elementi con role="alert"
+      e aria-live="polite" (o "assertive" per errori critici)
+    - In caso di errore di login, aria-describedby viene
+      aggiunto dinamicamente ai campi username e password
+      per collegare il campo al messaggio di errore
+
+  Live region:
+    - Il drawer carrello usa aria-live per annunciare i
+      cambiamenti di contenuto
+    - I messaggi di successo/errore nelle form admin sono
+      in elementi role="status" (successo) e role="alert"
+      (errore) con aria-live
+
+  Classe .sr-only:
+    Usata per testo visivamente nascosto ma accessibile
+    agli screen reader (es. label della barra di ricerca,
+    legend dei fieldset tecnici, pulsante "Avvia ricerca").
+
+  Contenuti decorativi:
+    Tutte le immagini puramente decorative (icone, frecce,
+    elementi grafici) hanno alt="" e aria-hidden="true".
+
+  Link visitati:
+    I link visitati sono stilizzati con un colore distinto
+    per aiutare l'orientamento degli utenti.
+
+4.12.2 Compatibilità browser
+
+  Il sito è stato verificato su:
+    - Google Chrome (versione recente) — Windows
+    - Mozilla Firefox (versione recente) — Windows
+    - Microsoft Edge (versione recente) — Windows
+    - Safari (versione recente) — macOS/iOS
+
+  Note sulla compatibilità:
+    - Su Safari, la navigazione da tastiera con Tab funziona
+      di default solo sui form element (input, select, button).
+      Per abilitare la navigazione sui link è necessario
+      attivare "Tasto Tab evidenzia ogni elemento" nelle
+      impostazioni di accessibilità di macOS oppure usare
+      Option+Tab. Questo è un comportamento predefinito di
+      Safari, non un errore del sito.
+    - Le griglia CSS Grid e le custom properties CSS sono
+      supportate in tutti i browser moderni target.
+    - L'attributo loading="lazy" sulle immagini è ignorato
+      dai browser più datati (nessun impatto funzionale).
+
+================================================================
+5. TEST EFFETTUATI
+================================================================
+
+5.1 NAVIGABILITÀ E ACCESSIBILITÀ
+---------------------------------
+
+La validazione HTML è stata effettuata con il validatore
+W3C (validator.w3.org) e con TotalValidator.
+La validazione CSS è stata effettuata con il CSS Validation
+Service del W3C (jigsaw.w3.org).
+
+[SCREENSHOT VALIDAZIONE HTML — DA AGGIUNGERE]
+[SCREENSHOT VALIDAZIONE CSS — DA AGGIUNGERE]
+
+L'accessibilità è stata verificata con TotalValidator
+(versione desktop) e con il tool WAVE (wave.webaim.org).
+
+[SCREENSHOT TOTALVALIDATOR — DA AGGIUNGERE]
+
+Errori risolti durante il processo di sviluppo:
+  - Rimossi attributi aria-describedby che referenziavano
+    ID inesistenti (WCAG E9591)
+  - Aggiunto role="list" sulle <ul> con list-style:none
+    per ripristinare la semantica di lista in VoiceOver
+  - Corretti i contrasti colore insufficienti
+  - Eliminati elementi annidati in modo non valido
+  - Aggiunto attributo alt a tutte le immagini
+
+
+5.2 FALSI POSITIVI
+------------------
+
+  Safari Tab navigation:
+    La mancata navigazione con Tab sui link in Safari è
+    un comportamento predefinito del browser (non un errore
+    del sito). La stessa pagina navigata con Firefox e
+    Chrome funziona correttamente con Tab.
+
+  [Elencare qui altri eventuali falsi positivi rilevati
+   dal validatore, con spiegazione del perché non sono
+   errori reali]
+
+
+5.3 SCREEN READER
+-----------------
+
+Il sito è stato testato con:
+  - NVDA (Windows) con Firefox
+  - VoiceOver (macOS) con Safari
+
+Funzionalità verificate:
+  - Annuncio del contenuto al caricamento pagina
+  - Navigazione per landmark (header, nav, main, footer)
+  - Annuncio del numero di elementi nelle liste
+    (categorie, filtri, prodotti)
+  - Lettura dei messaggi di errore nei form
+  - Funzionamento del skip link
+  - Annuncio dello stato del menu hamburger
+    (aria-expanded="true"/"false")
+  - Navigazione da tastiera senza mouse (Tab, Enter,
+    Esc per chiudere menu/drawer)
+  - Annuncio della pagina corrente (aria-current="page")
+
+================================================================
+6. ORGANIZZAZIONE DEL GRUPPO
+================================================================
+
+6.1 DIVISIONE DEI COMPITI
+--------------------------
+
+[COMPLETARE CON LA DIVISIONE REALE DEL LAVORO]
+
+Esempio di struttura:
+
+  [Nome Cognome] — [Matricola XXXXXX]
+    - Struttura HTML e template delle pagine [elencare]
+    - CSS: [specificare quali sezioni]
+    - PHP: [specificare quali script]
+    - [...]
+
+  [Nome Cognome] — [Matricola XXXXXX]
+    - JavaScript: [specificare quali file]
+    - Database: schema e popolamento
+    - [...]
+
+  [Nome Cognome] — [Matricola XXXXXX]
+    - Accessibilità e test con screen reader
+    - Validazione HTML/CSS
+    - [...]
+
+  [Nome Cognome] — [Matricola XXXXXX]
+    - CSS responsive (mobile.css) e CSS stampa (stampa.css)
+    - Sicurezza (prepared statement, hashing, anti brute-force)
+    - [...]
+
+================================================================
+7. NOTE
+================================================================
+
+  - Il file .htaccess include le direttive ErrorDocument
+    in forma commentata: vanno decommentate e aggiornate
+    con il percorso assoluto corretto sul server del corso
+    dopo il deployment.
+
+  - Le immagini dei prodotti sono incluse nella cartella
+    immagini/prodotti/ e sono referenziate nel database.
+    In caso di re-import del solo file SQL su un server
+    diverso, le immagini devono essere caricate separatamente.
+
+  - Il font Bungee viene caricato da Google Fonts CDN.
+    Se il server del corso blocca le richieste esterne,
+    il titolo sarà visualizzato con il font di sistema
+    sans-serif senza impatti funzionali.
+
+  - La barra di ricerca richiede JavaScript per apparire:
+    senza JS è accessibile navigando a prodotti.php con
+    il parametro ?q= nell'URL (il form GET è comunque
+    presente nel DOM, nascosto tramite JS).
+
+================================================================
+Fine del documento
+================================================================

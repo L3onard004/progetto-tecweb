@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <title>Chi siamo | UrbanWear</title>
+  <meta content="Scopri la storia di UrbanWear e il team che guida il brand." name="description">
+  <meta name="author" content="UrbanWear Team">
+  <meta name="keywords" content="UrbanWear, chi siamo, team, brand, storia, moda urbana, valori">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link href="Style/style.css" rel="stylesheet">
+  <link href="Style/mobile.css" rel="stylesheet">
+  <link href="Style/stampa.css" rel="stylesheet">
+    <script src="Script/menu-header.js"></script>
+</head>
+
+<body id="top">
+  <header>
+    <a class="skip-link" href="#contenuto-principale-chi-siamo">Vai al contenuto</a>
+    <div class="header-content">
+      <div class="header-top-row">
+        <h1 class="logo" aria-label="UrbanWear - negozio di abbigliamento online"><span lang="en">UrbanWear</span></h1>
+
+        <button class="menu-toggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false"
+          aria-controls="navbar">
+          <img src="immagini/icone/Hamburger-Menu.webp" alt="" aria-hidden="true">
+        </button>
+      </div>
+
+      <nav aria-label="Navigazione principale" id="navbar">
+        <ul class="menu">
+          <li><a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a></li>
+          <li><a href="prodotti.php" aria-label="Scopri il catalogo prodotti">Prodotti</a></li>
+          <li><a href="chi_siamo.html" aria-current="page" aria-label="Scopri chi siamo e il nostro team">Chi siamo</a></li>
+        </ul>
+        <div class="nav-icons">
+          <button type="button" class="icon-btn" id="btn-search" aria-label="Apri ricerca" aria-expanded="false"
+            aria-controls="search-bar">
+            <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="nav-icon-img">
+          </button>
+          <a href="login.php" class="icon-btn" aria-label="Accedi all'account">
+            <img src="immagini/icone/utente.webp" alt="" aria-hidden="true" class="nav-icon-img">
+          </a>
+          <a href="carrello.php" class="icon-btn" id="btn-cart" aria-label="Apri il carrello">
+            <img src="immagini/icone/carrello.webp" alt="" aria-hidden="true" class="nav-icon-img">
+            <span class="cart-badge" id="cart-badge" aria-hidden="true">0</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="search-bar" id="search-bar">
+        <form action="prodotti.php" method="get" role="search" class="search-form">
+          <label for="search-input" class="sr-only">Cerca prodotti...</label>
+          <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="search-form-icon">
+          <input type="search" id="search-input" name="q" placeholder="Cerca prodotti..." required>
+          <button type="submit" class="sr-only">Avvia ricerca</button>
+        </form>
+      </div>
+
+      <nav aria-label="Percorso attuale nel sito" class="breadcrumb">
+        <p>Ti trovi in: <a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a> <span aria-hidden="true"> » </span> Chi Siamo</p>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page" id="contenuto-principale-chi-siamo" tabindex="-1">
+
+    <section aria-labelledby="storia" class="chi-siamo-section">
+      <h2 id="storia">La nostra storia</h2>
+      <p>
+        <span lang="en">UrbanWear</span> nasce nel 2010 a Padova. Il nostro obiettivo è vendere <span lang="en">online</span> uno stile urbano, moderno e accessibile.
+        Fin dall’inizio scegliamo di essere un <span lang="en">e-commerce</span> puro. Non abbiamo negozi fisici. Puntiamo tutto
+        sull'innovazione digitale e sulla qualità dei prodotti.
+      </p>
+      <p>
+        Nel corso degli anni siamo cresciuti molto. Oggi siamo una realtà solida e conosciuta. Il nostro pubblico è
+        giovane, fedele e attento alle mode. Le nostre collezioni si ispirano allo <span lang="en">streetwear</span> e alla cultura di strada,
+        seguendo sempre i gusti delle nuove generazioni.
+      </p>
+      <p>
+        La nostra struttura è snella e flessibile. Per questo ci adattiamo subito alle novità del mercato. Manteniamo un
+        rapporto diretto con i clienti. Offriamo un’esperienza di acquisto semplice e immediata. Non avere negozi fisici
+        ci aiuta, perché possiamo concentrare le energie sul prodotto e sul servizio <span lang="en">online</span>.
+      </p>
+      <p>
+        Oggi <span lang="en">UrbanWear</span> vende in Italia e all'estero. Nonostante questo, la nostra identità resta semplice e autentica.
+        Lavoriamo con passione per la moda e l'innovazione. Mettiamo sempre al centro chi sceglie di vestire <span lang="en">UrbanWear</span>
+        ogni giorno.
+      </p>
+    </section>
+
+    <section aria-labelledby="board" class="chi-siamo-section">
+      <h2 id="board">Il <span lang="en">board</span> di <span lang="en">UrbanWear</span></h2>
+      <p>
+        <span lang="en">UrbanWear</span> è guidata da un gruppo di giovani professionisti. Uniamo competenze diverse e abbiamo la stessa
+        visione.
+        Il nostro <span lang="en">team</span> coordina le aree più importanti dell'azienda. In questo modo garantiamo efficienza e innovazione.
+        Restiamo sempre fedeli all'identità del nostro <span lang="en">brand</span>.
+      </p>
+
+      <ul class="team-grid">
+        <li class="team-card">
+          <article>
+            <img src="immagini/chiSiamo/ceo.webp" alt="Foto di Edoardo Granziero">
+            <h3>Edoardo Granziero</h3>
+            <p>
+              Edoardo è il nostro <span lang="en">Chief Executive Officer</span>. Lui guida la direzione generale dell’azienda.
+              Nel suo lavoro coordina tutte le aree operative.
+              Decide le strategie per far crescere il <span lang="en">brand</span> e prende le decisioni più importanti per il futuro di
+              <span lang="en">UrbanWear</span>.
+            </p>
+          </article>
+        </li>
+        <li class="team-card">
+          <article>
+            <img src="immagini/chiSiamo/cto.webp" alt="Foto di Leonardo Lorenzin">
+            <h3>Leonardo Lorenzin</h3>
+            <p>
+              Leonardo è il nostro <span lang="en">Chief Technology Officer</span>. Lui guida tutto il settore tecnologico dell'azienda.
+              Nel suo ruolo controlla la piattaforma <span lang="en">e-commerce</span> e la sicurezza dei sistemi. Lavora ogni giorno
+              sull'innovazione digitale. Il suo obiettivo è offrire ai clienti un sito veloce, sicuro e facile da usare.
+            </p>
+          </article>
+        </li>
+        <li class="team-card">
+          <article>
+            <img src="immagini/chiSiamo/cfo.webp" alt="Foto di Diego Rinaldo">
+            <h3>Diego Rinaldo</h3>
+            <p>
+              Diego è il nostro <span lang="en">Chief Financial Officer</span>. Lui gestisce i conti dell'azienda e pianifica gli investimenti.
+              Nel suo lavoro coordina anche le attività di <span lang="en">marketing</span> e di comunicazione. Il suo obiettivo è far crescere
+              il <span lang="en">brand</span> in modo sicuro e far conoscere <span lang="en">UrbanWear</span> a un pubblico sempre più grande.
+            </p>
+          </article>
+        </li>
+        <li class="team-card">
+          <article>
+            <img src="immagini/chiSiamo/cscs.webp" alt="Foto di Marco Barbiero">
+            <h3>Marco Barbiero</h3>
+            <p>
+              Marco cura lo stile di <span lang="en">UrbanWear</span>. Segue la nascita delle collezioni e decide il <span lang="en">look</span> del <span lang="en">brand</span>.
+              Ha un occhio attento per la cultura urbana e per le nuove tendenze. Il suo obiettivo è semplice: creare
+              prodotti unici che raccontano i nostri valori e piacciono ai giovani.
+            </p>
+          </article>
+        </li>
+      </ul>
+
+      <p class="cta">
+        Vuoi scoprire le nostre collezioni? <a href="prodotti.php">Vai ai prodotti</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contatti</h3>
+        <p><span class="etichetta-footer">Email:</span> <a href="mailto:urbanwear@gmail.com" aria-label="Scrivi un'email a urbanwear@gmail.com">urbanwear@gmail.com</a></p>
+        <p><span class="etichetta-footer">Tel:</span> <a href="tel:+391234567890" aria-label="Chiama il +39 123 456 7890">+39 123 456 7890</a></p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Informazioni</h3>
+        <ul>
+          <li><a href="termini.html" aria-label="Leggi i termini di servizio">Termini di servizio</a></li>
+          <li><a href="privacy.html" aria-label="Leggi la Privacy Policy"><span lang="en">Privacy Policy</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="#top" class="back-to-top" aria-label="Torna all'inizio della pagina">
+      <img src="immagini/icone/torna_su.webp" alt="" aria-hidden="true">
+    </a>
+
+    <div class="footer-bottom">
+      <p>© 2026 <span lang="en">UrbanWear</span>. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+  <div id="overlay" hidden></div>
+
+  <aside id="cart-drawer" hidden>
+    <div class="drawer-header">
+      <h2>Carrello</h2>
+      <button class="drawer-close" id="btn-drawer-close" aria-label="Chiudi carrello">
+        <img src="immagini/icone/x.webp" alt="" aria-hidden="true" class="close-icon-img">
+      </button>
+    </div>
+    <div class="drawer-items" id="drawer-items"></div>
+    <div class="drawer-footer">
+      <div class="drawer-total">
+        <span>Totale</span>
+        <span id="cart-total">€0,00</span>
+      </div>
+      <a href="carrello.php" class="btn-checkout">Vai al carrello</a>
+      <button class="btn-continue" id="btn-continue-shopping">Continua lo <span lang="en">shopping</span></button>
+    </div>
+  </aside>
+
+</body>
+
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8" >
+  <meta content="width=device-width, initial-scale=1" name="viewport" >
+  <title>Gestione Prodotti | UrbanWear</title>
+  <meta
+    content="Pannello di amministrazione UrbanWear. Gestisci il catalogo prodotti: aggiungi, modifica, disattiva o elimina i capi di abbigliamento dal negozio."
+    name="description" >
+  <meta name="author" content="UrbanWear Team" >
+  <meta name="keywords" content="UrbanWear, amministrazione, gestione prodotti, catalogo, admin" >
+  <meta content="noindex" name="robots" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link href="Style/style.css" rel="stylesheet" >
+  <link href="Style/mobile.css" rel="stylesheet" >
+  <link href="Style/stampa.css" rel="stylesheet" >
+    <script src="Script/validazione-gestione-prodotti.js"></script>
+    <script src="Script/menu-header.js"></script>
+</head>
+
+<body id="top">
+
+  <header>
+    <a class="skip-link" href="#contenuto-principale-gestione">Vai al contenuto</a>
+    <div class="header-content">
+      <div class="header-top-row">
+        <h1 class="logo" aria-label="UrbanWear - negozio di abbigliamento online"><span lang="en">UrbanWear</span></h1>
+
+        <button class="menu-toggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false"
+          aria-controls="navbar">
+          <img src="immagini/icone/Hamburger-Menu.webp" alt="" aria-hidden="true" >
+        </button>
+      </div>
+
+      <nav aria-label="Navigazione principale" id="navbar">
+        <ul class="menu">
+          <li><a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a></li>
+          <li><a href="prodotti.php" aria-label="Scopri il catalogo prodotti">Prodotti</a></li>
+          <li><a href="chi_siamo.html" aria-label="Scopri chi siamo e il nostro team">Chi siamo</a></li>
+        </ul>
+        <div class="nav-icons">
+          <button type="button" class="icon-btn" id="btn-search" aria-label="Apri ricerca"
+              aria-expanded="false" aria-controls="search-bar">
+              <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="nav-icon-img" >
+          </button>
+          <a href="login.php" class="icon-btn" aria-label="Accedi all'account">
+              <img src="immagini/icone/utente.webp" alt="" aria-hidden="true" class="nav-icon-img" >
+          </a>
+          <a href="carrello.php" class="icon-btn" id="btn-cart" aria-label="Apri il carrello">
+              <img src="immagini/icone/carrello.webp" alt="" aria-hidden="true" class="nav-icon-img" >
+              <span class="cart-badge" id="cart-badge" aria-hidden="true">0</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="search-bar" id="search-bar">
+        <form action="prodotti.php" method="get" role="search" class="search-form">
+          <label for="search-input" class="sr-only">Cerca prodotti...</label>
+          <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="search-form-icon" >
+          <input type="search" id="search-input" name="q" placeholder="Cerca prodotti..." required >
+          <button type="submit" class="sr-only">Avvia ricerca</button>
+        </form>
+      </div>
+
+      <nav aria-label="Percorso attuale nel sito" class="breadcrumb">
+        <p>Ti trovi in: <a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a> <span aria-hidden="true"> » </span> <a href="login.php">Area
+            personale</a> <span aria-hidden="true"> » </span> Gestione prodotti</p>
+      </nav>
+    </div>
+  </header>
+
+  <main class="admin-page" id="contenuto-principale-gestione" tabindex="-1">
+    <p class="auth-alt"><a href="login.php">Torna all'area personale</a></p>
+    <h2>Area amministratore</h2>
+    <section aria-labelledby="titolo-tabella" class="admin-section">
+      <h3 id="titolo-tabella">Catalogo attuale</h3>
+      [PRODOTTI_TABELLA]
+    </section>
+
+    <div class="grid-gestione-prodotti">
+      <section aria-labelledby="titolo-aggiungi" class="admin-section" id="sezione-aggiungi">
+        <h3 id="titolo-aggiungi">Aggiungi prodotto</h3>
+        <form action="gestione_prodotti.php#sezione-aggiungi" class="admin-form" enctype="multipart/form-data"
+          method="post">
+          <fieldset>
+            <legend class="sr-only">Nuovo prodotto</legend>
+            <label for="nome">Nome prodotto</label>
+            <input id="nome" maxlength="100" name="nome" required="" type="text" placeholder="es. Felpa con cappuccio">
+
+            <label for="descrizione">Descrizione</label>
+            <textarea id="descrizione" name="descrizione" required="" rows="4" placeholder="es. Felpa oversize in cotone biologico, comoda e versatile per ogni occasione."></textarea>
+
+            <label for="materiali">Materiali</label>
+            <textarea id="materiali" name="materiali" required="" rows="3" aria-describedby="suggerimento-elenco" placeholder="es. 100% cotone biologico"></textarea>
+
+            <label for="guida_taglie">Guida alle taglie</label>
+            <textarea id="guida_taglie" name="guida_taglie" required="" rows="4" aria-describedby="suggerimento-elenco" placeholder="es. S: petto 86–91 cm"></textarea>
+
+            <label for="cura">Istruzioni per la cura</label>
+            <textarea id="cura" name="cura" required="" rows="3" aria-describedby="suggerimento-elenco" placeholder="es. Lavare a 30°C"></textarea>
+            <small id="suggerimento-elenco">Scrivi un elemento per riga: ogni riga apparirà come punto elenco nella pagina prodotto.</small>
+
+            <label for="prezzo">Prezzo (€)</label>
+            <input id="prezzo" min="0.01" name="prezzo" required="" step="0.01" type="number" placeholder="es. 29.99">
+
+            <label for="categoria">Categoria</label>
+            <select id="categoria" name="id_categoria" required="">
+              <option disabled="" selected="" value="">Seleziona una categoria</option>
+              <template data-ph="CATEGORIE_OPTIONS"></template>
+            </select>
+
+            <label for="target">Target</label>
+            <select id="target" name="target" required="">
+              <option disabled="" selected="" value="">Seleziona un target</option>
+              <option value="uomo">Uomo</option>
+              <option value="donna">Donna</option>
+              <option value="bambino">Bambino</option>
+              <option value="bambina">Bambina</option>
+            </select>
+
+            <fieldset class="admin-subfieldset">
+              <legend class="sr-only">Immagini prodotto (4)</legend>
+              <p class="vincolo-campo">File supportati: PNG, JPG, WEBP. Dimensione massima: 1 MB per immagine.</p>
+
+              <label for="img_normale">Immagine principale</label>
+              <input accept=".png,.jpg,.jpeg,.webp" id="img_normale" name="img_normale" required type="file" >
+
+              <label for="img_fronte">Immagine fronte</label>
+              <input accept=".png,.jpg,.jpeg,.webp" id="img_fronte" name="img_fronte" required type="file" >
+
+              <label for="img_retro">Immagine retro</label>
+              <input accept=".png,.jpg,.jpeg,.webp" id="img_retro" name="img_retro" required type="file" >
+
+              <label for="img_extra">Immagine extra</label>
+              <input accept=".png,.jpg,.jpeg,.webp" id="img_extra" name="img_extra" required type="file" >
+            </fieldset>
+
+            <input name="azione" type="hidden" value="aggiungi" >
+            <button class="aggiungi-immagine-button" type="submit">Aggiungi</button>
+          </fieldset>
+        </form>
+        <div class="form_errors" role="alert" aria-live="polite">[ERR_ADD]</div>
+        <div class="form_success" role="status" aria-live="polite">[SUCC_ADD]</div>
+      </section>
+
+      <div class="colonna-azioni">
+        <section aria-labelledby="titolo-modifica" class="admin-section" id="sezione-modifica">
+          <h3 id="titolo-modifica">Modifica prodotto</h3>
+          <p class="vincolo-campo">Non compilare uno specifico campo se non lo vuoi modificare.</p>
+          <form action="gestione_prodotti.php#sezione-modifica" class="admin-form" method="post">
+            <fieldset>
+              <legend class="sr-only">Aggiorna dati</legend>
+              <label for="prodotto_mod">Prodotto</label>
+              <select id="prodotto_mod" name="id_prodotto" required="">
+                <option disabled="" selected="" value="">Seleziona un prodotto</option>
+                <template data-ph="PRODOTTI_OPTIONS"></template>
+              </select>
+
+              <label for="nome_mod">Nuovo nome</label>
+              <input id="nome_mod" maxlength="100" name="nome_mod" type="text" placeholder="es. Felpa con cappuccio">
+
+              <label for="descrizione_mod">Nuova descrizione</label>
+              <textarea id="descrizione_mod" name="descrizione_mod" rows="4" placeholder="es. Felpa oversize in cotone biologico, comoda e versatile per ogni occasione."></textarea>
+
+              <label for="materiali_mod">Nuovi materiali</label>
+              <textarea id="materiali_mod" name="materiali_mod" rows="3" aria-describedby="suggerimento-elenco-mod" placeholder="es. 100% cotone biologico"></textarea>
+
+              <label for="guida_taglie_mod">Nuova guida alle taglie</label>
+              <textarea id="guida_taglie_mod" name="guida_taglie_mod" rows="4" aria-describedby="suggerimento-elenco-mod" placeholder="es. S: petto 86–91 cm"></textarea>
+
+              <label for="cura_mod">Nuove istruzioni per la cura</label>
+              <textarea id="cura_mod" name="cura_mod" rows="3" aria-describedby="suggerimento-elenco-mod" placeholder="es. Lavare a 30°C"></textarea>
+              <small id="suggerimento-elenco-mod">Scrivi un elemento per riga: ogni riga apparirà come punto elenco nella pagina prodotto.</small>
+
+              <label for="prezzo_mod">Nuovo prezzo (€)</label>
+              <input id="prezzo_mod" min="0.01" name="prezzo_mod" step="0.01" type="number" placeholder="es. 29.99">
+
+              <input name="azione" type="hidden" value="modifica" >
+              <button class="salva-modifiche-button" type="submit">Salva modifiche</button>
+            </fieldset>
+          </form>
+          <div class="form_errors" role="alert" aria-live="polite">[ERR_EDIT]</div>
+          <div class="form_success" role="status" aria-live="polite">[SUCC_EDIT]</div>
+        </section>
+
+        <section aria-labelledby="titolo-stato" class="admin-section" id="sezione-stato">
+          <h3 id="titolo-stato">Attiva / disattiva prodotto</h3>
+          <form action="gestione_prodotti.php#sezione-stato" class="admin-form" method="post">
+            <fieldset>
+              <legend class="sr-only">Stato prodotto</legend>
+              <label for="prodotto_stato">Prodotto</label>
+              <select id="prodotto_stato" name="id_prodotto" required="">
+                <option disabled="" selected="" value="">Seleziona un prodotto</option>
+                <template data-ph="PRODOTTI_OPTIONS"></template>
+              </select>
+
+              <label for="stato">Imposta stato</label>
+              <select id="stato" name="attivo" required="">
+                <option disabled="" selected="" value="">Seleziona</option>
+                <option value="1">Attivo (visibile e acquistabile)</option>
+                <option value="0">Disattivo (nascosto)</option>
+              </select>
+
+              <input name="azione" type="hidden" value="stato" >
+              <button class="aggiorna-stato-button" type="submit">Aggiorna stato</button>
+            </fieldset>
+          </form>
+          <div class="form_errors" role="alert" aria-live="polite">[ERR_STATO]</div>
+          <div class="form_success" role="status" aria-live="polite">[SUCC_STATO]</div>
+        </section>
+
+        <section aria-labelledby="titolo-elimina" class="admin-section" id="sezione-elimina">
+          <h3 id="titolo-elimina">Elimina prodotto</h3>
+          <form action="gestione_prodotti.php#sezione-elimina" class="admin-form" method="post">
+            <fieldset>
+              <legend class="sr-only">Rimozione definitiva</legend>
+              <label for="prodotto_del">Prodotto</label>
+              <select id="prodotto_del" name="id_prodotto" required="">
+                <option disabled="" selected="" value="">Seleziona un prodotto</option>
+                <template data-ph="PRODOTTI_OPTIONS"></template>
+              </select>
+
+              <input name="azione" type="hidden" value="elimina" >
+              <button class="elimina-button" type="submit">Elimina</button>
+            </fieldset>
+          </form>
+          <div class="form_errors" role="alert" aria-live="polite">[ERR_DEL]</div>
+          <div class="form_success" role="status" aria-live="polite">[SUCC_DEL]</div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contatti</h3>
+        <p><span class="etichetta-footer">Email:</span> <a href="mailto:urbanwear@gmail.com" aria-label="Scrivi un'email a urbanwear@gmail.com">urbanwear@gmail.com</a></p>
+        <p><span class="etichetta-footer">Tel:</span> <a href="tel:+391234567890" aria-label="Chiama il +39 123 456 7890">+39 123 456 7890</a></p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Informazioni</h3>
+        <ul>
+          <li><a href="termini.html" aria-label="Leggi i termini di servizio">Termini di servizio</a></li>
+          <li><a href="privacy.html" aria-label="Leggi la Privacy Policy"><span lang="en">Privacy Policy</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="#top" class="back-to-top" aria-label="Torna all'inizio della pagina">
+      <img src="immagini/icone/torna_su.webp" alt="" aria-hidden="true">
+    </a>
+
+    <div class="footer-bottom">
+      <p>© 2026 <span lang="en">UrbanWear</span>. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+  <div id="overlay" hidden></div>
+
+  <aside id="cart-drawer" hidden>
+    <div class="drawer-header">
+      <h2>Carrello</h2>
+      <button class="drawer-close" id="btn-drawer-close" aria-label="Chiudi carrello">
+        <img src="immagini/icone/x.webp" alt="" aria-hidden="true" class="close-icon-img" >
+      </button>
+    </div>
+    <div class="drawer-items" id="drawer-items"></div>
+    <div class="drawer-footer">
+      <div class="drawer-total">
+        <span>Totale</span>
+        <span id="cart-total">€0,00</span>
+      </div>
+      <a href="carrello.php" class="btn-checkout">Vai al carrello</a>
+      <button class="btn-continue" id="btn-continue-shopping">Continua lo <span lang="en">shopping</span></button>
+    </div>
+  </aside>
+
+</body>
+
+</html>

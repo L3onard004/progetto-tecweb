@@ -1,0 +1,18 @@
+
+# Gestione errori: ErrorDocument richiede il path assoluto dalla root del server.
+# Da configurare dopo aver verificato il path sul server del corso, ad es.:
+#   ErrorDocument 404 /path-sul-server/404.php
+#   ErrorDocument 403 /path-sul-server/403.php
+#   ErrorDocument 500 /path-sul-server/500.php
+# (Gli errori PHP sono già gestiti internamente dai redirect nei file .php)
+
+# -------------------------------------------------
+# Impostazioni aggiuntive
+# -------------------------------------------------
+ServerSignature Off
+
+# Protezione file sensibili (ma non bloccare PHP)
+<FilesMatch "\.(htaccess|htpasswd|ini|log|sh)$">
+    Require all denied
+</FilesMatch>
+

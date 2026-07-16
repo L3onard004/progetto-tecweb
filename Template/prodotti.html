@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8" >
+    <meta content="width=device-width, initial-scale=1" name="viewport" >
+    <title>Prodotti | UrbanWear</title>
+    <meta content="Scopri tutti i prodotti UrbanWear: abbigliamento moderno per uomo, donna, bambino e bambina." name="description" >
+    <meta name="author" content="UrbanWear Team" >
+    <meta name="keywords" content="UrbanWear, prodotti, catalogo, abbigliamento, felpe, t-shirt, giacche, scarpe, accessori" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link href="Style/style.css" rel="stylesheet" >
+    <link href="Style/mobile.css" rel="stylesheet" >
+    <link href="Style/stampa.css" rel="stylesheet" >
+    <script src="Script/filtro-catalogo.js"></script>
+    <script src="Script/menu-header.js"></script>
+</head>
+
+<body id="top">
+
+    <header>
+        <a class="skip-link" href="#contenuto-principale-prodotti">Vai al contenuto</a>
+        <div class="header-content">
+            <div class="header-top-row">
+                <h1 class="logo" aria-label="UrbanWear - negozio di abbigliamento online"><span lang="en">UrbanWear</span></h1>
+
+                <button class="menu-toggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="navbar">
+                    <img src="immagini/icone/Hamburger-Menu.webp" alt="" aria-hidden="true" >
+                </button>
+            </div>
+
+            <nav aria-label="Navigazione principale" id="navbar">
+                <ul class="menu">
+                    <li><a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a></li>
+                    <li><a href="prodotti.php" aria-current="page" aria-label="Scopri il catalogo prodotti">Prodotti</a></li>
+                    <li><a href="chi_siamo.html" aria-label="Scopri chi siamo e il nostro team">Chi siamo</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <button type="button" class="icon-btn" id="btn-search" aria-label="Apri ricerca"
+                        aria-expanded="false" aria-controls="search-bar">
+                        <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="nav-icon-img" >
+                    </button>
+                    <a href="login.php" class="icon-btn" aria-label="Accedi all'account">
+                        <img src="immagini/icone/utente.webp" alt="" aria-hidden="true" class="nav-icon-img" >
+                    </a>
+                    <a href="carrello.php" class="icon-btn" id="btn-cart" aria-label="Apri il carrello">
+                        <img src="immagini/icone/carrello.webp" alt="" aria-hidden="true" class="nav-icon-img" >
+                        <span class="cart-badge" id="cart-badge" aria-hidden="true">0</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="search-bar" id="search-bar">
+                <form action="prodotti.php" method="get" role="search" class="search-form">
+                    <label for="search-input" class="sr-only">Cerca prodotti...</label>
+                    <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="search-form-icon" >
+                    <input type="search" id="search-input" name="q" placeholder="Cerca prodotti..." required >
+                    <button type="submit" class="sr-only">Avvia ricerca</button>
+                </form>
+            </div>
+
+            <nav aria-label="Percorso attuale nel sito" class="breadcrumb">
+                <p>Ti trovi in: <a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a> <span aria-hidden="true"> » </span>
+                    {{BREADCRUMB_PRODOTTI}}</p>
+            </nav>
+        </div>
+    </header>
+
+    <main id="contenuto-principale-prodotti" tabindex="-1">
+        <h2>Catalogo prodotti</h2>
+
+        {{ERRORE}}
+
+        <section aria-label="Filtra per target" class="filtri">
+            <ul class="filtri-grid">
+                <li><a class="filtro-card" href="prodotti.php?target=donna" aria-label="Filtra prodotti per donna">Donna</a></li>
+                <li><a class="filtro-card" href="prodotti.php?target=uomo" aria-label="Filtra prodotti per uomo">Uomo</a></li>
+                <li><a class="filtro-card" href="prodotti.php?target=bambino" aria-label="Filtra prodotti per bambino">Bambino</a></li>
+                <li><a class="filtro-card" href="prodotti.php?target=bambina" aria-label="Filtra prodotti per bambina">Bambina</a></li>
+            </ul>
+            {{TORNA_CATALOGO}}
+        </section>
+
+        <section aria-label="Prodotti disponibili">
+            {{PRODOTTI}}
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contatti</h3>
+                <p><span class="etichetta-footer">Email:</span> <a href="mailto:urbanwear@gmail.com" aria-label="Scrivi un'email a urbanwear@gmail.com">urbanwear@gmail.com</a></p>
+                <p><span class="etichetta-footer">Tel:</span> <a href="tel:+391234567890" aria-label="Chiama il +39 123 456 7890">+39 123 456 7890</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Informazioni</h3>
+                <ul>
+                    <li><a href="termini.html" aria-label="Leggi i termini di servizio">Termini di servizio</a></li>
+                    <li><a href="privacy.html" aria-label="Leggi la Privacy Policy"><span lang="en">Privacy Policy</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="#top" class="back-to-top" aria-label="Torna all'inizio della pagina">
+            <img src="immagini/icone/torna_su.webp" alt="" aria-hidden="true">
+        </a>
+
+        <div class="footer-bottom">
+            <p>© 2026 <span lang="en">UrbanWear</span>. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+    <div id="overlay" hidden></div>
+
+    <aside id="cart-drawer" hidden>
+        <div class="drawer-header">
+            <h2>Carrello</h2>
+            <button class="drawer-close" id="btn-drawer-close" aria-label="Chiudi carrello">
+                <img src="immagini/icone/x.webp" alt="" aria-hidden="true" class="close-icon-img" >
+            </button>
+        </div>
+        <div class="drawer-items" id="drawer-items"></div>
+        <div class="drawer-footer">
+            <div class="drawer-total">
+                <span>Totale</span>
+                <span id="cart-total">€0,00</span>
+            </div>
+            <a href="carrello.php" class="btn-checkout">Vai al carrello</a>
+            <button class="btn-continue" id="btn-continue-shopping">Continua lo <span lang="en">shopping</span></button>
+        </div>
+    </aside>
+
+</body>
+
+</html>

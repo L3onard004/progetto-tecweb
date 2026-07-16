@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="utf-8">
+  <title>Resi e rimborsi | UrbanWear</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Informazioni su resi, rimborsi e assistenza clienti UrbanWear.">
+  <meta name="author" content="UrbanWear Team">
+  <meta name="keywords" content="UrbanWear, resi, rimborsi, assistenza clienti, politica resi">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+  <link href="Style/style.css" rel="stylesheet">
+  <link href="Style/mobile.css" rel="stylesheet">
+  <link href="Style/stampa.css" rel="stylesheet">
+    <script src="Script/torna-indietro.js"></script>
+    <script src="Script/menu-header.js"></script>
+</head>
+
+<body id="top">
+
+  <header>
+    <a class="skip-link" href="#contenuto-principale-reso">Vai al contenuto</a>
+    <div class="header-content">
+      <div class="header-top-row">
+        <h1 class="logo" aria-label="UrbanWear - negozio di abbigliamento online"><span lang="en">UrbanWear</span></h1>
+
+        <button class="menu-toggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false"
+          aria-controls="navbar">
+          <img src="immagini/icone/Hamburger-Menu.webp" alt="" aria-hidden="true">
+        </button>
+      </div>
+
+      <nav aria-label="Navigazione principale" id="navbar">
+        <ul class="menu">
+          <li><a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a></li>
+          <li><a href="prodotti.php" aria-label="Scopri il catalogo prodotti">Prodotti</a></li>
+          <li><a href="chi_siamo.html" aria-label="Scopri chi siamo e il nostro team">Chi siamo</a></li>
+        </ul>
+        <div class="nav-icons">
+          <button type="button" class="icon-btn" id="btn-search" aria-label="Apri ricerca" aria-expanded="false"
+            aria-controls="search-bar">
+            <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="nav-icon-img">
+          </button>
+          <a href="login.php" class="icon-btn" aria-label="Accedi all'account">
+            <img src="immagini/icone/utente.webp" alt="" aria-hidden="true" class="nav-icon-img">
+          </a>
+          <a href="carrello.php" class="icon-btn" id="btn-cart" aria-label="Apri il carrello">
+            <img src="immagini/icone/carrello.webp" alt="" aria-hidden="true" class="nav-icon-img">
+            <span class="cart-badge" id="cart-badge" aria-hidden="true">0</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="search-bar" id="search-bar">
+        <form action="prodotti.php" method="get" role="search" class="search-form">
+          <label for="search-input" class="sr-only">Cerca prodotti...</label>
+          <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="search-form-icon">
+          <input type="search" id="search-input" name="q" placeholder="Cerca prodotti..." required>
+          <button type="submit" class="sr-only">Avvia ricerca</button>
+        </form>
+      </div>
+
+      <nav aria-label="Percorso attuale nel sito" class="breadcrumb">
+        <p>Ti trovi in: <a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a> <span aria-hidden="true"> » </span> <a href="login.php">Area
+            personale</a> <span aria-hidden="true"> » </span> Resi e Rimborsi</p>
+      </nav>
+    </div>
+  </header>
+
+  <main class="reso-container reso-page" id="contenuto-principale-reso" tabindex="-1">
+    <section class="reso-hero">
+      <h2>Resi e rimborsi</h2>
+      <p><span lang="en">UrbanWear</span> vuole offrire un’esperienza di acquisto chiara, semplice e sicura. In questa pagina trovi tutte le
+        informazioni per fare un reso. Spieghiamo come preparare il pacco, quali sono i tempi per il rimborso e come
+        parlare con il nostro servizio clienti.</p>
+    </section>
+
+    <div class="reso-grid">
+      <section class="reso-card" aria-labelledby="come-richiedere-reso">
+        <h3 id="come-richiedere-reso">Come richiedere un reso</h3>
+        <p>
+          Per avviare una richiesta di reso è necessario contattare il servizio clienti
+          indicando in modo chiaro i riferimenti dell’ordine e il motivo della richiesta.
+        </p>
+        <ol>
+          <li>Accedi alla tua area personale e consulta la sezione <a href="ordini.php">i miei ordini</a>.</li>
+          <li>Individua l’ordine per cui desideri richiedere assistenza o reso.</li>
+          <li>Invia una comunicazione a <a href="mailto:urbanwear@gmail.com" aria-label="Scrivi un'email a urbanwear@gmail.com">urbanwear@gmail.com</a>.</li>
+          <li>
+            Nel messaggio specifica:
+            <ul>
+              <li>numero ordine;</li>
+              <li>nome e cognome dell’intestatario dell’acquisto;</li>
+              <li>data di acquisto;</li>
+              <li>prodotto o prodotti interessati;</li>
+              <li>motivazione della richiesta;</li>
+              <li>eventuali immagini utili, in caso di articolo non conforme o danneggiato.</li>
+            </ul>
+          </li>
+        </ol>
+        <p>
+          Una volta ricevuta la richiesta, il nostro team fornirà le istruzioni operative
+          per procedere correttamente.
+        </p>
+      </section>
+
+      <section class="reso-card" aria-labelledby="condizioni-reso">
+        <h3 id="condizioni-reso">Condizioni di accettazione del reso</h3>
+        <p>Per ricevere il rimborso, i prodotti devono essere controllati e risultare in perfetto stato. Segui queste
+          regole:</p>
+        <ul>
+          <li>Il prodotto deve essere integro, non usato e non modificato.</li>
+          <li>Devi inserire nel pacco le etichette, gli accessori e la confezione originale.</li>
+          <li>L’articolo non deve mostrare segni di usura, lavaggio o danni.</li>
+          <li>Se il prodotto è difettoso o rovinato, ti consigliamo di inviarci una foto.</li>
+        </ul>
+        <p><span lang="en">UrbanWear</span> controlla lo stato della merce appena arriva nei nostri magazzini. Subito dopo, approviamo il
+          rimborso o la sostituzione del prodotto.</p>
+      </section>
+    </div>
+
+    <div class="reso-grid">
+      <section class="reso-card" aria-labelledby="rimborsi-tempistiche">
+        <h3 id="rimborsi-tempistiche">Rimborsi e tempistiche</h3>
+        <p>
+          Appena controlliamo il tuo reso, ti inviamo un aggiornamento via <span lang="en">email</span>. Ecco come gestiamo la tua richiesta:
+        </p>
+        <ul>
+          <li>Se il reso è approvato: ricevi il rimborso sullo stesso metodo di pagamento usato per l'acquisto.
+          </li>
+          <li>Tempi di accredito: i giorni necessari per vedere i soldi dipendono dalla tua banca.</li>
+          <li>
+            Se il reso è rifiutato: ti contattiamo via <span lang="en">email</span> per spiegarti il motivo del problema.
+          </li>
+        </ul>
+        <p>
+          In caso di prodotti difettosi: se l'articolo è sbagliato o rovinato, scrivi subito al servizio clienti per
+          risolvere la pratica in modo rapido.
+        </p>
+      </section>
+
+      <section class="reso-card" aria-labelledby="assistenza-clienti">
+        <h3 id="assistenza-clienti">Assistenza clienti</h3>
+        <p>
+          Il <span lang="en">team</span> di <span lang="en">UrbanWear</span> è sempre pronto ad aiutarti. Puoi scriverci per qualsiasi domanda su ordini, resi,
+          rimborsi o disponibilità dei prodotti. Trovi tutti i nostri recapiti qui sotto.
+        </p>
+
+        <dl class="reso-summary-list">
+          <div>
+            <dt>Email</dt>
+            <dd><a href="mailto:urbanwear@gmail.com" aria-label="Scrivi un'email a urbanwear@gmail.com">urbanwear@gmail.com</a></dd>
+          </div>
+          <div>
+            <dt>Telefono</dt>
+            <dd><a href="tel:+391234567890" aria-label="Chiama il +39 123 456 7890">+39 123 456 7890</a></dd>
+          </div>
+          <div>
+            <dt>Oggetto consigliato</dt>
+            <dd>Richiesta reso ordine n. XXXXX</dd>
+          </div>
+          <div>
+            <dt>Informazioni utili da indicare</dt>
+            <dd>Numero ordine, data acquisto, prodotto, motivazione</dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+
+    <section class="reso-card" aria-labelledby="faq-resi">
+      <h3 id="faq-resi">Domande frequenti</h3>
+
+      <h4>Posso rendere più prodotti dello stesso ordine?</h4>
+      <p>
+        Sì. Nella tua richiesta puoi inserire uno o più prodotti dello stesso ordine. Ti basta indicare chiaramente
+        quali articoli vuoi restituire.
+      </p>
+
+      <h4>Devo contattare l’assistenza prima di spedire il reso?</h4>
+      <p>
+        Sì. Ti consigliamo di aspettare sempre le istruzioni del servizio clienti prima di spedire il pacco. In questo
+        modo evitiamo errori con la tua pratica.
+      </p>
+
+      <h4>Cosa faccio se ho ricevuto un prodotto sbagliato o difettoso?</h4>
+      <p>
+        Scrivici subito. Spiega il problema e inserisci una foto del prodotto se ti è possibile.
+      </p>
+
+      <h4>Dove posso controllare i miei acquisti?</h4>
+      <p>
+        Puoi vedere tutti i tuoi vecchi ordini all'interno della tua area personale sul sito.
+      </p>
+    </section>
+    <button id="btn-back" class="go-back">Torna indietro</button>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Contatti</h3>
+        <p><span class="etichetta-footer">Email:</span> <a href="mailto:urbanwear@gmail.com" aria-label="Scrivi un'email a urbanwear@gmail.com">urbanwear@gmail.com</a></p>
+        <p><span class="etichetta-footer">Tel:</span> <a href="tel:+391234567890" aria-label="Chiama il +39 123 456 7890">+39 123 456 7890</a></p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Informazioni</h3>
+        <ul>
+          <li><a href="termini.html" aria-label="Leggi i termini di servizio">Termini di servizio</a></li>
+          <li><a href="privacy.html" aria-label="Leggi la Privacy Policy"><span lang="en">Privacy Policy</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <a href="#top" class="back-to-top" aria-label="Torna all'inizio della pagina">
+      <img src="immagini/icone/torna_su.webp" alt="" aria-hidden="true">
+    </a>
+
+    <div class="footer-bottom">
+      <p>© 2026 <span lang="en">UrbanWear</span>. Tutti i diritti riservati.</p>
+    </div>
+  </footer>
+  <div id="overlay" hidden></div>
+
+  <aside id="cart-drawer" hidden>
+    <div class="drawer-header">
+      <h2>Carrello</h2>
+      <button class="drawer-close" id="btn-drawer-close" aria-label="Chiudi carrello">
+        <img src="immagini/icone/x.webp" alt="" aria-hidden="true" class="close-icon-img">
+      </button>
+    </div>
+    <div class="drawer-items" id="drawer-items"></div>
+    <div class="drawer-footer">
+      <div class="drawer-total">
+        <span>Totale</span>
+        <span id="cart-total">€0,00</span>
+      </div>
+      <a href="carrello.php" class="btn-checkout">Vai al carrello</a>
+      <button class="btn-continue" id="btn-continue-shopping">Continua lo <span lang="en">shopping</span></button>
+    </div>
+  </aside>
+
+</body>
+
+</html>

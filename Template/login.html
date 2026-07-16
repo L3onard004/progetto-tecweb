@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width">
+
+    <title>Login | UrbanWear</title>
+    <meta name="description" content="Accedi al tuo account UrbanWear.">
+    <meta name="author" content="UrbanWear Team" >
+    <meta name="keywords" content="UrbanWear, login, accedi, area personale, account" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Style/style.css">
+    <link href="Style/mobile.css" rel="stylesheet" >
+    <link href="Style/stampa.css" rel="stylesheet" >
+    <script src="Script/menu-header.js"></script>
+</head>
+
+<body id="top">
+
+    <header>
+        <a class="skip-link" href="#contenuto-principale-area-personale">Vai al contenuto</a>
+        <div class="header-content">
+            <div class="header-top-row">
+                <h1 class="logo" aria-label="UrbanWear - negozio di abbigliamento online"><span lang="en">UrbanWear</span></h1>
+
+                <button class="menu-toggle" type="button" aria-label="Apri il menu di navigazione" aria-expanded="false"
+                    aria-controls="navbar">
+                    <img src="immagini/icone/Hamburger-Menu.webp" alt="" aria-hidden="true" >
+                </button>
+            </div>
+
+            <nav aria-label="Navigazione principale" id="navbar">
+                <ul class="menu">
+                    <li><a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a></li>
+                    <li><a href="prodotti.php" aria-label="Scopri il catalogo prodotti">Prodotti</a></li>
+                    <li><a href="chi_siamo.html" aria-label="Scopri chi siamo e il nostro team">Chi siamo</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <button type="button" class="icon-btn" id="btn-search" aria-label="Apri ricerca"
+                        aria-expanded="false" aria-controls="search-bar">
+                        <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="nav-icon-img" >
+                    </button>
+                    <a href="login.php" class="icon-btn" aria-label="Accedi all'account">
+                        <img src="immagini/icone/utente.webp" alt="" aria-hidden="true" class="nav-icon-img" >
+                    </a>
+                    <a href="carrello.php" class="icon-btn" id="btn-cart" aria-label="Apri il carrello">
+                        <img src="immagini/icone/carrello.webp" alt="" aria-hidden="true" class="nav-icon-img" >
+                        <span class="cart-badge" id="cart-badge" aria-hidden="true">0</span>
+                    </a>
+                </div>
+            </nav>
+
+            <div class="search-bar" id="search-bar">
+                <form action="prodotti.php" method="get" role="search" class="search-form">
+                    <label for="search-input" class="sr-only">Cerca prodotti...</label>
+                    <img src="immagini/icone/ricerca.webp" alt="" aria-hidden="true" class="search-form-icon" >
+                    <input type="search" id="search-input" name="q" placeholder="Cerca prodotti..." required >
+                    <button type="submit" class="sr-only">Avvia ricerca</button>
+                </form>
+            </div>
+
+            <nav aria-label="Percorso attuale nel sito" class="breadcrumb">
+                <p>Ti trovi in: <a href="index.html" aria-label="Home - pagina iniziale"><span lang="en">Home</span></a> <span aria-hidden="true"> » </span> Area personale</p>
+            </nav>
+        </div>
+    </header>
+    <main class="area-personale" id="contenuto-principale-area-personale" tabindex="-1">
+        <div class="account-layout">
+            <div class="account-col-left">
+                <!-- BLOCCO NON LOGGATO -->
+                <section id="login-form" class="box-auth" aria-labelledby="titolo-login" tabindex="-1">
+                    <h2 id="titolo-login" class="titolo-box"><span lang="en">LOGIN</span></h2>
+
+                    <p class="account-subtitle">Accedi per vedere carrello, ordini e impostazioni del profilo.</p>
+
+                    <div id="login-errors" class="form_errors" role="alert" aria-live="polite">
+                        <p>[LOGIN_ERR]</p>
+                    </div>
+
+                    <form class="form-auth" method="post" action="login.php" autocomplete="on">
+                        <fieldset>
+                            <legend class="sr-only">Inserisci le credenziali</legend>
+
+                            <label for="username"><span lang="en">Username</span></label>
+                            <input type="text" id="username" name="username" required autocomplete="username"
+                                value="[LOGIN_USERNAME]">
+
+                            <label for="password"><span lang="en">Password</span></label>
+                            <input type="password" id="password" name="password" required
+                                autocomplete="current-password">
+
+                            <div class="form-actions">
+                                <button class="login-button" type="submit"><span lang="en">Login</span></button>
+                            </div>
+                        </fieldset>
+                    </form>
+
+                    <p class="auth-alt">Nuovo utente? <a href="registrazione.php" aria-label="Registrati come nuovo utente">Registrati</a>.</p>
+                </section>
+
+                <!-- BLOCCO LOGGATO -->
+                <section id="benvenuto" class="box-account" aria-labelledby="titolo-account" tabindex="-1">
+                    <h2 id="titolo-account" class="titolo-box">BENVENUTO <span
+                            class="account-name">[DISPLAY_NAME]</span>
+                    </h2>
+                    <p class="account-subtitle">Seleziona un’azione rapida:</p>
+
+                    <ul class="account-links">
+                        <li class="account-item"><a href="carrello.php" aria-label="Vai al carrello">Carrello</a></li>
+                        <li class="account-item"><a href="ordini.php" aria-label="Visualizza lo storico dei tuoi ordini">Storico ordini</a></li>
+                        <li id="admin-nav-link" class="account-item"><a href="gestione_prodotti.php" aria-label="Gestione prodotti, sezione amministratore">Gestione prodotti</a></li>
+                        <li class="account-item"><a href="modifica_password.php" aria-label="Modifica la password del tuo account">Modifica password</a></li>
+                        <li class="account-item"><a href="logout.php" aria-label="Esci dall'account"><span lang="en">Logout</span></a></li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="account-col-right">
+                <section class="account-info box-section" aria-labelledby="account-info-title">
+                    <h2 id="account-info-title" class="titolo-box">Area personale</h2>
+                    <ul class="valori">
+                        <li>Salva il carrello tra una visita e l’altra</li>
+                        <li>Consulta lo storico ordini</li>
+                        <li>Gestisci la password in autonomia</li>
+                    </ul>
+                    <p class="auth-alt">Hai bisogno di aiuto? Controlla la pagina <a href="chi_siamo.html">Chi
+                            siamo</a>
+                        o i contatti nel footer.</p>
+                </section>
+
+                <section class="box-section box-resi" aria-labelledby="titolo-supporto">
+                    <h3 id="titolo-supporto">Supporto</h3>
+                    <p>
+                        Hai bisogno di assistenza o vuoi consultare le informazioni sui resi?
+                        Visita la pagina dedicata.
+                    </p>
+                    <a href="reso.html">Vai alla pagina resi</a>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contatti</h3>
+                <p><span class="etichetta-footer">Email:</span> <a
+                        href="mailto:urbanwear@gmail.com">urbanwear@gmail.com</a></p>
+                <p><span class="etichetta-footer">Tel:</span> <a href="tel:+391234567890" aria-label="Chiama il +39 123 456 7890">+39 123 456 7890</a></p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Informazioni</h3>
+                <ul>
+                    <li><a href="termini.html" aria-label="Leggi i termini di servizio">Termini di servizio</a></li>
+                    <li><a href="privacy.html" aria-label="Leggi la Privacy Policy"><span lang="en">Privacy Policy</span></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="#top" class="back-to-top" aria-label="Torna all'inizio della pagina">
+            <img src="immagini/icone/torna_su.webp" alt="" aria-hidden="true">
+        </a>
+
+        <div class="footer-bottom">
+            <p>© 2026 <span lang="en">UrbanWear</span>. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <div id="overlay" hidden></div>
+
+    <aside id="cart-drawer" hidden>
+        <div class="drawer-header">
+            <h2>Carrello</h2>
+            <button class="drawer-close" id="btn-drawer-close" aria-label="Chiudi carrello">
+                <img src="immagini/icone/x.webp" alt="" aria-hidden="true" class="close-icon-img" >
+            </button>
+        </div>
+        <div class="drawer-items" id="drawer-items"></div>
+        <div class="drawer-footer">
+            <div class="drawer-total">
+                <span>Totale</span>
+                <span id="cart-total">€0,00</span>
+            </div>
+            <a href="carrello.php" class="btn-checkout">Vai al carrello</a>
+            <button class="btn-continue" id="btn-continue-shopping">Continua lo <span lang="en">shopping</span></button>
+        </div>
+    </aside>
+
+</body>
+
+</html>
